@@ -6,8 +6,12 @@ class Aircraft < ApplicationRecord
       transition in_hangar: :departure_awaiting
     end
 
-    event :take_off do
-      transition departure_awaiting: :departed
+    event :start_take_off do
+      transition %i[in_hangar departure_awaiting] => :takes_off
+    end
+
+    event :departure do
+      transition takes_off: :departed
     end
 
     event :move_to_hangar do
