@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_095645) do
+ActiveRecord::Schema.define(version: 2020_04_22_190349) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string "number", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_095645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "runaway_id"
+    t.datetime "enqueued_at"
     t.index ["runaway_id"], name: "index_aircrafts_on_runaway_id"
   end
 

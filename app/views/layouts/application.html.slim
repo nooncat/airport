@@ -9,4 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = yield
+    .container.mt-5
+      = render 'layouts/flash'
+
+      = yield

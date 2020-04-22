@@ -7,3 +7,6 @@ en:
       airport: Airport
       aircrafts: Aircrafts
       take_off_queue: Take off queue
+      take_off: Take off
+    take_off:
+      take_off_initialized: Take off initialized

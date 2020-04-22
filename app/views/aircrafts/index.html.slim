@@ -1,12 +1,21 @@
-.container.mt-5
-  h1.text-center = t('.airport')
+h1.text-center = t('.airport')
 
-  .row.mt-4
-    .col
-      h5.text-center.bg-light = t('.aircrafts')
-      .list-group
-        - @aircrafts.each do |aircraft|
-          li.list-group-item = "#{aircraft.number} (#{aircraft.human_state_name})"
+.row.mt-4
+  .col
+    h5.text-center.bg-light = t('.aircrafts')
+    .list-group
+      - @aircrafts.each do |aircraft|
+        li.list-group-item
+          = "#{aircraft.number} (#{aircraft.human_state_name})"
+          - if aircraft.in_hangar?
+            = link_to t('.take_off'),
+                      take_off_aircraft_path(aircraft),
+                      method: :patch,
+                      class: 'btn-success btn-sm float-right'
 
-    .col.offset-md-1
-      h5.text-center.bg-light = t('.take_off_queue')
+  .col.offset-md-1
+    h5.text-center.bg-light = t('.take_off_queue')
+    .list-group
+      - @in_queue_aircrafts.each_with_index do |aircraft, index|
+        li.list-group-item
+          = "#{index + 1}. #{aircraft.number} #{aircraft.enqueued_at}"
