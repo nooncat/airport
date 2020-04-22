@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_155058) do
+ActiveRecord::Schema.define(version: 2020_04_22_095645) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string "number", null: false
     t.string "state", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "runaway_id"
+    t.index ["runaway_id"], name: "index_aircrafts_on_runaway_id"
+  end
+
+  create_table "runaways", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
