@@ -23,10 +23,6 @@ class Aircraft < ApplicationRecord
     event :departure do
       transition takes_off: :departed
     end
-
-    event :move_to_hangar do
-      transition departed: :in_hangar
-    end
   end
 
   private
