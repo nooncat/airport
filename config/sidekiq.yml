@@ -1,0 +1,2 @@
+:queues:
+  - [take_off_processing, 10]
