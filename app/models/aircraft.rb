@@ -1,4 +1,6 @@
 class Aircraft < ApplicationRecord
+  audited only: :state
+
   belongs_to :runaway, optional: true
 
   validates :number, presence: true

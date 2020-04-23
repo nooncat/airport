@@ -6,7 +6,16 @@ h1.text-center = t('.airport')
     .list-group
       - @aircrafts.each do |aircraft|
         li.list-group-item
-          = "#{aircraft.number} (#{aircraft.human_state_name})"
+          span
+            = aircraft.number
+          span[
+            class='ml-2 text-secondary'
+            data-toggle='tooltip'
+            data-title=aircraft_status_history(aircraft.audits)
+            data-html='true'
+          ]
+            = aircraft.human_state_name
+
           - if aircraft.in_hangar?
             = link_to t('.take_off'),
                       take_off_aircraft_path(aircraft),
